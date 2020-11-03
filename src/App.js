@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import User from './components/User'
+import Articles from './components/Articles';
 
 function App() {
+  const [theme, setTheme] = useState(true)
+
+  const handleTheme = () => {
+    setTheme(!theme)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>React Skeletons</h1>
       </header>
+      <button className="btn" onClick={handleTheme}>Change Theme</button>
+      <div className="content">
+        <Articles theme={theme ? "light" : "dark"} />
+        <User theme={theme ? "light" : "dark"} />
+      </div>
     </div>
   );
 }
